@@ -1,6 +1,6 @@
-import 'package:test/test.dart';
+// import 'package:test/test.dart';
 
-import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import 'package:circular_chart_flutter/circular_chart_flutter.dart';
 
 void main() {
 
