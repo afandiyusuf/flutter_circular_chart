@@ -9,7 +9,7 @@ import 'dart:ui';
 /// [value], what proportion of a stack this corresponds to depends on the [percentageValues]
 /// property of the chart.
 class CircularSegmentEntry {
-  const CircularSegmentEntry(this.value, this.color, {this.rankKey});
+  const CircularSegmentEntry(this.value, this.color, {this.rankKey, this.strokeWidth});
 
   /// The value of this data point, defines the sweep angle of the arc
   /// that is drawn. If the chart being drawn has [percentageValues] set to false
@@ -26,7 +26,7 @@ class CircularSegmentEntry {
   final String rankKey;
 
   String toString() {
-    return '$rankKey: $value $color';
+    return '$rankKey: $value $color $strokeWidth';
   }
 }
 

@@ -16,7 +16,7 @@ class AnimatedRadialChartExample extends StatefulWidget {
 class _AnimatedRadialChartExampleState
     extends State<AnimatedRadialChartExample> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
-      new GlobalKey<AnimatedCircularChartState>();
+  new GlobalKey<AnimatedCircularChartState>();
   final _chartSize = const Size(200.0, 200.0);
 
   double value = 50.0;
@@ -51,9 +51,9 @@ class _AnimatedRadialChartExampleState
       new CircularStackEntry(
         <CircularSegmentEntry>[
           new CircularSegmentEntry(
-            value,
-            dialColor,
-            rankKey: 'percentage',
+              value,
+              dialColor,
+              rankKey: 'percentage', strokeWidth: 5
           )
         ],
         rankKey: 'percentage',
