@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import 'package:circular_chart_flutter/circular_chart_flutter.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -59,7 +59,7 @@ class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
     setState(() {
       sampleIndex++;
       List<CircularStackEntry> data = _quarterlyProfitPieData[sampleIndex % 3];
-      _chartKey.currentState.updateData(data);
+      _chartKey.currentState!.updateData(data);
     });
   }
 

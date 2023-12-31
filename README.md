@@ -1,7 +1,8 @@
 [![pub package](https://img.shields.io/pub/v/flutter_circular_chart.svg)](https://pub.dartlang.org/packages/flutter_circular_chart)
 
-# Flutter Circular Chart
+# Circular Chart Flutter
 
+This package is based and forked from [flutter_circular_chart](https://github.com/xqwzts/flutter_circular_chart)
 A library for creating animated circular chart widgets with Flutter, inspired by [Zero to One with Flutter](https://medium.com/dartlang/zero-to-one-with-flutter-43b13fd7b354).
 
 ## Overview

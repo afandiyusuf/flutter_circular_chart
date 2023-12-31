@@ -20,11 +20,11 @@ class CircularSegmentEntry {
   final double value;
 
   /// The color drawn in the stack for this segment.
-  final Color color;
+  final Color? color;
 
   /// An optional String key, used when animating charts to preserve semantics when
   /// transitioning between data points.
-  final String rankKey;
+  final String? rankKey;
 
   final double? strokeWidth;
 
@@ -48,5 +48,5 @@ class CircularStackEntry {
 
   /// An optional String key, used when animating charts to preserve semantics when
   /// transitioning between data points.
-  final String rankKey;
+  final String? rankKey;
 }

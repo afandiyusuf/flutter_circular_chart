@@ -1,9 +1,9 @@
 import 'dart:ui' show lerpDouble;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_circular_chart/src/entry.dart';
-import 'package:flutter_circular_chart/src/segment.dart';
-import 'package:flutter_circular_chart/src/tween.dart';
+import 'package:circular_chart_flutter/src/entry.dart';
+import 'package:circular_chart_flutter/src/segment.dart';
+import 'package:circular_chart_flutter/src/tween.dart';
 
 const double _kMaxAngle = 360.0;
 
@@ -17,15 +17,15 @@ class CircularChartStack implements MergeTweenable<CircularChartStack> {
   );
 
   final int rank;
-  final double radius;
-  final double width;
-  final double startAngle;
+  final double? radius;
+  final double? width;
+  final double? startAngle;
   final List<CircularChartSegment> segments;
 
   factory CircularChartStack.fromData(
     int stackRank,
     List<CircularSegmentEntry> entries,
-    Map<String, int> entryRanks,
+    Map<String?, int>? entryRanks,
     bool percentageValues,
     double startRadius,
     double stackWidth,
@@ -81,10 +81,10 @@ class CircularChartStackTween extends Tween<CircularChartStack> {
 
   @override
   CircularChartStack lerp(double t) => new CircularChartStack(
-        begin.rank,
-        lerpDouble(begin.radius, end.radius, t),
-        lerpDouble(begin.width, end.width, t),
-        lerpDouble(begin.startAngle, end.startAngle, t),
+        begin!.rank,
+        lerpDouble(begin!.radius, end!.radius, t),
+        lerpDouble(begin!.width, end!.width, t),
+        lerpDouble(begin!.startAngle, end!.startAngle, t),
         _circularSegmentsTween.lerp(t),
       );
 }
