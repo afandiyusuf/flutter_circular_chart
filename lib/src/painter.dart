@@ -64,7 +64,7 @@ void _paintChart(Canvas canvas, Size size, CircularChart chart) {
   for (final CircularChartStack stack in chart.stacks) {
     for (final segment in stack.segments) {
       segmentPaint.color = segment.color;
-      segmentPaint.strokeWidth = stack.width;
+      segmentPaint.strokeWidth = segment.strokeWidth ?? stack.width;
 
       canvas.drawArc(
         new Rect.fromCircle(
