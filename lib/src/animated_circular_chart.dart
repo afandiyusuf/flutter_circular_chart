@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:circular_chart_flutter/src/circular_chart.dart';
 import 'package:circular_chart_flutter/src/entry.dart';
@@ -36,8 +35,7 @@ class AnimatedCircularChart extends StatefulWidget {
     this.holeLabel,
     this.labelStyle,
     this.edgeStyle = SegmentEdgeStyle.flat,
-  })  : assert(size != null),
-        super(key: key);
+  })  : super(key: key);
 
   /// The size of the bounding box this chart will be constrained to.
   final Size size;
@@ -114,12 +112,10 @@ class AnimatedCircularChart extends StatefulWidget {
   /// AnimatedCircularChartState animatedCircularChart = AnimatedCircularChart.of(context);
   /// ```
   static AnimatedCircularChartState? of(BuildContext context,
-      {bool nullOk: false}) {
-    assert(context != null);
-    assert(nullOk != null);
+      {bool nullOk = false}) {
 
-    final AnimatedCircularChartState? result = context
-        .findAncestorStateOfType<AnimatedCircularChartState>();
+    final AnimatedCircularChartState? result =
+        context.findAncestorStateOfType<AnimatedCircularChartState>();
 
     if (nullOk || result != null) return result;
 
@@ -218,7 +214,7 @@ class AnimatedCircularChartState extends State<AnimatedCircularChart>
   void _updateLabelPainter() {
     if (widget.holeLabel != null) {
       TextStyle? _labelStyle =
-          widget.labelStyle ?? Theme.of(context).textTheme.bodyText2;
+          widget.labelStyle ?? Theme.of(context).textTheme.bodyMedium;
       _labelPainter
         ..text = new TextSpan(style: _labelStyle, text: widget.holeLabel)
         ..textDirection = Directionality.of(context)

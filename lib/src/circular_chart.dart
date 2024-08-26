@@ -1,5 +1,4 @@
 import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:circular_chart_flutter/src/animated_circular_chart.dart';
 import 'package:circular_chart_flutter/src/entry.dart';
