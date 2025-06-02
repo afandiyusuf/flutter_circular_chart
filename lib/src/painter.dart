@@ -19,7 +19,7 @@ class AnimatedCircularChartPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(AnimatedCircularChartPainter old) => false;
+  bool shouldRepaint(AnimatedCircularChartPainter oldDelegate) => false;
 }
 
 class CircularChartPainter extends CustomPainter {
@@ -35,7 +35,7 @@ class CircularChartPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CircularChartPainter old) => false;
+  bool shouldRepaint(CircularChartPainter oldDelegate) => false;
 }
 
 const double _kRadiansPerDegree = math.pi / 180;
