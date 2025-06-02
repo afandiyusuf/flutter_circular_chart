@@ -1,4 +1,4 @@
-[![pub package](https://img.shields.io/pub/v/flutter_circular_chart.svg)](https://pub.dartlang.org/packages/flutter_circular_chart)
+[![pub package](https://img.shields.io/pub/v/circular_chart_flutter.svg)](https://pub.dartlang.org/packages/circular_chart_flutter)
 
 # Circular Chart Flutter
 
@@ -25,14 +25,19 @@ Check the examples folder for the source code for the above screenshots.
 
 ## Installation
 
-Install the latest version [from pub](https://pub.dartlang.org/packages/flutter_circular_chart#-installing-tab-).
+Install the latest version [from pub](https://pub.dartlang.org/packages/circular_chart_flutter#-installing-tab-).
+
+### Requirements
+
+* Dart SDK: >=2.17.0 <4.0.0 (Compatible with Dart 2 and Dart 3)
+* Flutter: Latest stable version recommended
 
 ## Getting Started
 
 Import the package:
 
 ```dart
-import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import 'package:circular_chart_flutter/circular_chart_flutter.dart';
 ```
 
 Create a [GlobalKey](https://docs.flutter.io/flutter/widgets/GlobalKey-class.html) to be able to access the chart and update its data:

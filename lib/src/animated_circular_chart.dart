@@ -35,7 +35,7 @@ class AnimatedCircularChart extends StatefulWidget {
     this.holeLabel,
     this.labelStyle,
     this.edgeStyle = SegmentEdgeStyle.flat,
-  })  : super(key: key);
+  }) : super(key: key);
 
   /// The size of the bounding box this chart will be constrained to.
   final Size size;
@@ -95,7 +95,7 @@ class AnimatedCircularChart extends StatefulWidget {
   /// The style used when rendering the [holeLabel].
   ///
   /// Defaults to the active [ThemeData]'s
-  /// [ThemeData.textTheme.body2] text style.
+  /// [ThemeData.textTheme.labelStyle] text style.
   final TextStyle? labelStyle;
 
   /// The type of segment edges to be drawn.
@@ -113,7 +113,6 @@ class AnimatedCircularChart extends StatefulWidget {
   /// ```
   static AnimatedCircularChartState? of(BuildContext context,
       {bool nullOk = false}) {
-
     final AnimatedCircularChartState? result =
         context.findAncestorStateOfType<AnimatedCircularChartState>();
 

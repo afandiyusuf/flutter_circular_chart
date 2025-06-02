@@ -2,41 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:circular_chart_flutter/circular_chart_flutter.dart';
 
 void main() {
-  runApp(new MaterialApp(
-    home: new AnimatedPieChartExample(),
+  runApp(const MaterialApp(
+    home: AnimatedPieChartExample(),
   ));
 }
 
 final List<List<CircularStackEntry>> _quarterlyProfitPieData = [
   <CircularStackEntry>[
-    new CircularStackEntry(
+    CircularStackEntry(
       <CircularSegmentEntry>[
-        new CircularSegmentEntry(500.0, Colors.red[200], rankKey: 'Q1'),
-        new CircularSegmentEntry(1000.0, Colors.green[200], rankKey: 'Q2'),
-        new CircularSegmentEntry(2000.0, Colors.blue[200], rankKey: 'Q3'),
-        new CircularSegmentEntry(1000.0, Colors.yellow[200], rankKey: 'Q4'),
+        CircularSegmentEntry(500.0, Colors.red[200], rankKey: 'Q1'),
+        CircularSegmentEntry(1000.0, Colors.green[200], rankKey: 'Q2'),
+        CircularSegmentEntry(2000.0, Colors.blue[200], rankKey: 'Q3'),
+        CircularSegmentEntry(1000.0, Colors.yellow[200], rankKey: 'Q4'),
       ],
       rankKey: 'Quarterly Profits',
     ),
   ],
   <CircularStackEntry>[
-    new CircularStackEntry(
+    CircularStackEntry(
       <CircularSegmentEntry>[
-        new CircularSegmentEntry(1500.0, Colors.red[200], rankKey: 'Q1'),
-        new CircularSegmentEntry(750.0, Colors.green[200], rankKey: 'Q2'),
-        new CircularSegmentEntry(2000.0, Colors.blue[200], rankKey: 'Q3'),
-        new CircularSegmentEntry(1000.0, Colors.yellow[200], rankKey: 'Q4'),
+        CircularSegmentEntry(1500.0, Colors.red[200], rankKey: 'Q1'),
+        CircularSegmentEntry(750.0, Colors.green[200], rankKey: 'Q2'),
+        CircularSegmentEntry(2000.0, Colors.blue[200], rankKey: 'Q3'),
+        CircularSegmentEntry(1000.0, Colors.yellow[200], rankKey: 'Q4'),
       ],
       rankKey: 'Quarterly Profits',
     ),
   ],
   <CircularStackEntry>[
-    new CircularStackEntry(
+    CircularStackEntry(
       <CircularSegmentEntry>[
-        new CircularSegmentEntry(1800.0, Colors.red[200], rankKey: 'Q1'),
-        new CircularSegmentEntry(2900.0, Colors.green[200], rankKey: 'Q2'),
-        new CircularSegmentEntry(4000.0, Colors.blue[200], rankKey: 'Q3'),
-        new CircularSegmentEntry(7000.0, Colors.yellow[200], rankKey: 'Q4'),
+        CircularSegmentEntry(1800.0, Colors.red[200], rankKey: 'Q1'),
+        CircularSegmentEntry(2900.0, Colors.green[200], rankKey: 'Q2'),
+        CircularSegmentEntry(4000.0, Colors.blue[200], rankKey: 'Q3'),
+        CircularSegmentEntry(7000.0, Colors.yellow[200], rankKey: 'Q4'),
       ],
       rankKey: 'Quarterly Profits',
     ),
@@ -44,14 +44,16 @@ final List<List<CircularStackEntry>> _quarterlyProfitPieData = [
 ];
 
 class AnimatedPieChartExample extends StatefulWidget {
+  const AnimatedPieChartExample({super.key});
+
   @override
   _AnimatedPieChartExampleState createState() =>
-      new _AnimatedPieChartExampleState();
+      _AnimatedPieChartExampleState();
 }
 
 class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
-      new GlobalKey<AnimatedCircularChartState>();
+      GlobalKey<AnimatedCircularChartState>();
   final _chartSize = const Size(300.0, 300.0);
   int sampleIndex = 0;
 
@@ -65,21 +67,21 @@ class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: const Text('Quarterly Profit'),
       ),
-      body: new Center(
-        child: new AnimatedCircularChart(
+      body: Center(
+        child: AnimatedCircularChart(
           key: _chartKey,
           size: _chartSize,
           initialChartData: _quarterlyProfitPieData[0],
           chartType: CircularChartType.Pie,
         ),
       ),
-      floatingActionButton: new FloatingActionButton(
-        child: new Icon(Icons.refresh),
+      floatingActionButton: FloatingActionButton(
         onPressed: _cycleSamples,
+        child: new Icon(Icons.refresh),
       ),
     );
   }
