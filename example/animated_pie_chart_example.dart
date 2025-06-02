@@ -47,11 +47,10 @@ class AnimatedPieChartExample extends StatefulWidget {
   const AnimatedPieChartExample({super.key});
 
   @override
-  _AnimatedPieChartExampleState createState() =>
-      _AnimatedPieChartExampleState();
+  AnimatedPieChartExampleState createState() => AnimatedPieChartExampleState();
 }
 
-class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
+class AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
       GlobalKey<AnimatedCircularChartState>();
   final _chartSize = const Size(300.0, 300.0);
@@ -76,12 +75,12 @@ class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
           key: _chartKey,
           size: _chartSize,
           initialChartData: _quarterlyProfitPieData[0],
-          chartType: CircularChartType.Pie,
+          chartType: CircularChartType.pie,
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _cycleSamples,
-        child: new Icon(Icons.refresh),
+        child: const Icon(Icons.refresh),
       ),
     );
   }

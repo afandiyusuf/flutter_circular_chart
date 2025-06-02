@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ColorPalette {
-  static final ColorPalette primary = new ColorPalette(<Color?>[
+  static final ColorPalette primary = ColorPalette(<Color?>[
     Colors.blue[400],
     Colors.blue[200],
     Colors.red[400],

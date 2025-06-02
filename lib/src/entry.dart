@@ -25,6 +25,7 @@ class CircularSegmentEntry {
   /// transitioning between data points.
   final String? rankKey;
 
+  @override
   String toString() {
     return '$rankKey: $value $color';
   }

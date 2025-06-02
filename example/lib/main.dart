@@ -66,10 +66,10 @@ class PieChartExample extends StatefulWidget {
   const PieChartExample({Key? key}) : super(key: key);
 
   @override
-  _PieChartExampleState createState() => _PieChartExampleState();
+  PieChartExampleState createState() => PieChartExampleState();
 }
 
-class _PieChartExampleState extends State<PieChartExample> {
+class PieChartExampleState extends State<PieChartExample> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
       GlobalKey<AnimatedCircularChartState>();
   final _chartSize = const Size(300.0, 300.0);
@@ -83,7 +83,7 @@ class _PieChartExampleState extends State<PieChartExample> {
 
   List<CircularStackEntry> _generateData() {
     return [
-      CircularStackEntry(
+      const CircularStackEntry(
         [
           CircularSegmentEntry(500.0, Colors.red, rankKey: 'Q1'),
           CircularSegmentEntry(300.0, Colors.green, rankKey: 'Q2'),
@@ -106,7 +106,7 @@ class _PieChartExampleState extends State<PieChartExample> {
           key: _chartKey,
           size: _chartSize,
           initialChartData: _data!,
-          chartType: CircularChartType.Pie,
+          chartType: CircularChartType.pie,
           edgeStyle: SegmentEdgeStyle.flat,
         ),
       ),
@@ -118,10 +118,10 @@ class RadialChartExample extends StatefulWidget {
   const RadialChartExample({Key? key}) : super(key: key);
 
   @override
-  _RadialChartExampleState createState() => _RadialChartExampleState();
+  RadialChartExampleState createState() => RadialChartExampleState();
 }
 
-class _RadialChartExampleState extends State<RadialChartExample> {
+class RadialChartExampleState extends State<RadialChartExample> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
       GlobalKey<AnimatedCircularChartState>();
   final _chartSize = const Size(300.0, 300.0);
@@ -169,7 +169,7 @@ class _RadialChartExampleState extends State<RadialChartExample> {
               key: _chartKey,
               size: _chartSize,
               initialChartData: _data!,
-              chartType: CircularChartType.Radial,
+              chartType: CircularChartType.radial,
               edgeStyle: SegmentEdgeStyle.round,
               percentageValues: true,
               holeLabel: '${_value.toStringAsFixed(1)}%',
@@ -191,11 +191,13 @@ class _RadialChartExampleState extends State<RadialChartExample> {
 }
 
 class SimpleChartExample extends StatefulWidget {
+  const SimpleChartExample({super.key});
+
   @override
-  _SimpleChartExampleState createState() => _SimpleChartExampleState();
+  SimpleChartExampleState createState() => SimpleChartExampleState();
 }
 
-class _SimpleChartExampleState extends State<SimpleChartExample> {
+class SimpleChartExampleState extends State<SimpleChartExample> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
       GlobalKey<AnimatedCircularChartState>();
 
@@ -231,14 +233,14 @@ class _SimpleChartExampleState extends State<SimpleChartExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Simple Pie Chart'),
+        title: const Text('Simple Pie Chart'),
       ),
       body: Center(
         child: AnimatedCircularChart(
           key: _chartKey,
-          size: Size(300.0, 300.0),
+          size: const Size(300.0, 300.0),
           initialChartData: data,
-          chartType: CircularChartType.Pie,
+          chartType: CircularChartType.pie,
         ),
       ),
     );
@@ -289,13 +291,13 @@ class _RandomRadialChartExampleState extends State<RandomRadialChartExample> {
           key: _chartKey,
           size: _chartSize,
           initialChartData: generateRandomData(),
-          chartType: CircularChartType.Radial,
+          chartType: CircularChartType.radial,
           percentageValues: true,
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.refresh),
         onPressed: _randomize,
+        child: const Icon(Icons.refresh),
       ),
     );
   }

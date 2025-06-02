@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:circular_chart_flutter/circular_chart_flutter.dart';
-import 'dart:math' as Math;
+import 'dart:math' as math;
 
 import 'color_palette.dart';
 
 void main() {
-  runApp(new MaterialApp(
-    home: new RandomizedRadialChartExample(),
+  runApp(const MaterialApp(
+    home: RandomizedRadialChartExample(),
   ));
 }
 
 class RandomizedRadialChartExample extends StatefulWidget {
+  const RandomizedRadialChartExample({super.key});
+
   @override
-  _RandomizedRadialChartExampleState createState() =>
-      new _RandomizedRadialChartExampleState();
+  RandomizedRadialChartExampleState createState() =>
+      RandomizedRadialChartExampleState();
 }
 
-class _RandomizedRadialChartExampleState
+class RandomizedRadialChartExampleState
     extends State<RandomizedRadialChartExample> {
   final GlobalKey<AnimatedCircularChartState> _chartKey =
-      new GlobalKey<AnimatedCircularChartState>();
+      GlobalKey<AnimatedCircularChartState>();
   final _chartSize = const Size(300.0, 300.0);
-  final Math.Random random = new Math.Random();
+  final math.Random random = math.Random();
   List<CircularStackEntry>? data;
 
   @override
@@ -41,13 +43,13 @@ class _RandomizedRadialChartExampleState
 
   List<CircularStackEntry> _generateRandomData() {
     int stackCount = random.nextInt(10);
-    List<CircularStackEntry> data = new List.generate(stackCount, (i) {
+    List<CircularStackEntry> data = List.generate(stackCount, (i) {
       int segCount = random.nextInt(10);
-      List<CircularSegmentEntry> segments =  new List.generate(segCount, (j) {
+      List<CircularSegmentEntry> segments = List.generate(segCount, (j) {
         Color? randomColor = ColorPalette.primary.random(random);
-        return new CircularSegmentEntry(random.nextDouble(), randomColor);
+        return CircularSegmentEntry(random.nextDouble(), randomColor);
       });
-      return new CircularStackEntry(segments);
+      return CircularStackEntry(segments);
     });
 
     return data;
@@ -55,19 +57,19 @@ class _RandomizedRadialChartExampleState
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: const Text('Randomized radial data'),
       ),
-      body: new Center(
-        child: new AnimatedCircularChart(
+      body: Center(
+        child: AnimatedCircularChart(
           key: _chartKey,
           size: _chartSize,
           initialChartData: data,
-          chartType: CircularChartType.Radial,
+          chartType: CircularChartType.radial,
         ),
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: _randomize,
         child: const Icon(Icons.refresh),
       ),

@@ -4,13 +4,13 @@ import 'package:circular_chart_flutter/src/entry.dart';
 import 'package:circular_chart_flutter/src/painter.dart';
 
 // The default chart tween animation duration.
-const Duration _kDuration = const Duration(milliseconds: 300);
+const Duration _kDuration = Duration(milliseconds: 300);
 // The default angle the chart is oriented at.
 const double _kStartAngle = -90.0;
 
 enum CircularChartType {
-  Pie,
-  Radial,
+  pie,
+  radial,
 }
 
 /// Determines how the ends of a chart's segments should be drawn.
@@ -23,11 +23,11 @@ enum SegmentEdgeStyle {
 }
 
 class AnimatedCircularChart extends StatefulWidget {
-  AnimatedCircularChart({
+  const AnimatedCircularChart({
     Key? key,
     required this.size,
     required this.initialChartData,
-    this.chartType = CircularChartType.Radial,
+    this.chartType = CircularChartType.radial,
     this.duration = _kDuration,
     this.percentageValues = false,
     this.holeRadius,
@@ -45,15 +45,15 @@ class AnimatedCircularChart extends StatefulWidget {
   /// For a Pie chart that corresponds to individual slices in the chart.
   /// For a Radial chart it corresponds to individual segments on the same arc.
   ///
-  /// If length > 1 and [chartType] is [CircularChartType.Radial] then the stacks
+  /// If length > 1 and [chartType] is [CircularChartType.radial] then the stacks
   /// will be grouped together as concentric circles.
   ///
-  /// If [chartType] is [CircularChartType.Pie] then length cannot be > 1.
+  /// If [chartType] is [CircularChartType.pie] then length cannot be > 1.
   final List<CircularStackEntry>? initialChartData;
 
   /// The type of chart to be rendered.
-  /// Use [CircularChartType.Pie] for a circle divided into slices for each entry.
-  /// Use [CircularChartType.Radial] for one or more arcs with a hole in the center.
+  /// Use [CircularChartType.pie] for a circle divided into slices for each entry.
+  /// Use [CircularChartType.radial] for one or more arcs with a hole in the center.
   final CircularChartType chartType;
 
   /// The duration of the chart animation when [AnimatedCircularChartState.updateData]
@@ -69,11 +69,11 @@ class AnimatedCircularChart extends StatefulWidget {
   /// defaults to false.
   final bool percentageValues;
 
-  /// For [CircularChartType.Radial] charts this defines the circle in the center
+  /// For [CircularChartType.radial] charts this defines the circle in the center
   /// of the canvas, around which the chart is drawn. If not provided then it will
   /// be automatically calculated to accommodate all the data.
   ///
-  /// Has no effect in [CircularChartType.Pie] charts.
+  /// Has no effect in [CircularChartType.pie] charts.
   final double? holeRadius;
 
   /// The chart gets drawn and animates clockwise from [startAngle], defaulting to the
@@ -118,7 +118,7 @@ class AnimatedCircularChart extends StatefulWidget {
 
     if (nullOk || result != null) return result;
 
-    throw new FlutterError(
+    throw FlutterError(
         'AnimatedCircularChart.of() called with a context that does not contain a AnimatedCircularChart.\n'
         'No AnimatedCircularChart ancestor could be found starting from the context that was passed to AnimatedCircularChart.of(). '
         'This can happen when the context provided is from the same StatefulWidget that '
@@ -128,7 +128,7 @@ class AnimatedCircularChart extends StatefulWidget {
   }
 
   @override
-  AnimatedCircularChartState createState() => new AnimatedCircularChartState();
+  AnimatedCircularChartState createState() => AnimatedCircularChartState();
 }
 
 /// The state for a circular chart that animates when its data is updated.
@@ -151,21 +151,21 @@ class AnimatedCircularChartState extends State<AnimatedCircularChart>
   late AnimationController _animation;
   final Map<String?, int> _stackRanks = <String?, int>{};
   final Map<String?, int> _entryRanks = <String?, int>{};
-  final TextPainter _labelPainter = new TextPainter();
+  final TextPainter _labelPainter = TextPainter();
 
   @override
   void initState() {
     super.initState();
-    _animation = new AnimationController(
+    _animation = AnimationController(
       duration: widget.duration,
       vsync: this,
     );
 
     _assignRanks(widget.initialChartData!);
 
-    _tween = new CircularChartTween(
-      new CircularChart.empty(chartType: widget.chartType),
-      new CircularChart.fromData(
+    _tween = CircularChartTween(
+      CircularChart.empty(chartType: widget.chartType),
+      CircularChart.fromData(
         size: widget.size,
         data: widget.initialChartData!,
         chartType: widget.chartType,
@@ -212,12 +212,12 @@ class AnimatedCircularChartState extends State<AnimatedCircularChart>
 
   void _updateLabelPainter() {
     if (widget.holeLabel != null) {
-      TextStyle? _labelStyle =
+      TextStyle? labelStyle =
           widget.labelStyle ?? Theme.of(context).textTheme.bodyMedium;
       _labelPainter
-        ..text = new TextSpan(style: _labelStyle, text: widget.holeLabel)
+        ..text = TextSpan(style: labelStyle, text: widget.holeLabel)
         ..textDirection = Directionality.of(context)
-        ..textScaleFactor = MediaQuery.of(context).textScaleFactor
+        ..textScaler = MediaQuery.of(context).textScaler
         ..layout();
     } else {
       _labelPainter.text = null;
@@ -230,9 +230,9 @@ class AnimatedCircularChartState extends State<AnimatedCircularChart>
     _assignRanks(data);
 
     setState(() {
-      _tween = new CircularChartTween(
+      _tween = CircularChartTween(
         _tween.evaluate(_animation),
-        new CircularChart.fromData(
+        CircularChart.fromData(
           size: widget.size,
           data: data,
           chartType: widget.chartType,
@@ -250,9 +250,9 @@ class AnimatedCircularChartState extends State<AnimatedCircularChart>
 
   @override
   Widget build(BuildContext context) {
-    return new CustomPaint(
+    return CustomPaint(
       size: widget.size,
-      painter: new AnimatedCircularChartPainter(
+      painter: AnimatedCircularChartPainter(
         _tween.animate(_animation),
         widget.holeLabel != null ? _labelPainter : null,
       ),

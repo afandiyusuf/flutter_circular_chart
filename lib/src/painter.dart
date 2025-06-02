@@ -1,4 +1,4 @@
-import 'dart:math' as Math;
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:circular_chart_flutter/src/animated_circular_chart.dart';
@@ -38,13 +38,13 @@ class CircularChartPainter extends CustomPainter {
   bool shouldRepaint(CircularChartPainter old) => false;
 }
 
-const double _kRadiansPerDegree = Math.pi / 180;
+const double _kRadiansPerDegree = math.pi / 180;
 
 void _paintLabel(Canvas canvas, Size size, TextPainter? labelPainter) {
   if (labelPainter != null) {
     labelPainter.paint(
       canvas,
-      new Offset(
+      Offset(
         size.width / 2 - labelPainter.width / 2,
         size.height / 2 - labelPainter.height / 2,
       ),
@@ -53,8 +53,8 @@ void _paintLabel(Canvas canvas, Size size, TextPainter? labelPainter) {
 }
 
 void _paintChart(Canvas canvas, Size size, CircularChart chart) {
-  final Paint segmentPaint = new Paint()
-    ..style = chart.chartType == CircularChartType.Radial
+  final Paint segmentPaint = Paint()
+    ..style = chart.chartType == CircularChartType.radial
         ? PaintingStyle.stroke
         : PaintingStyle.fill
     ..strokeCap = chart.edgeStyle == SegmentEdgeStyle.round
@@ -67,13 +67,13 @@ void _paintChart(Canvas canvas, Size size, CircularChart chart) {
       segmentPaint.strokeWidth = stack.width!;
 
       canvas.drawArc(
-        new Rect.fromCircle(
-          center: new Offset(size.width / 2, size.height / 2),
+        Rect.fromCircle(
+          center: Offset(size.width / 2, size.height / 2),
           radius: stack.radius!,
         ),
         stack.startAngle! * _kRadiansPerDegree,
         segment.sweepAngle! * _kRadiansPerDegree,
-        chart.chartType == CircularChartType.Pie,
+        chart.chartType == CircularChartType.pie,
         segmentPaint,
       );
     }
